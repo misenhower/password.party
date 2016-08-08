@@ -17,7 +17,7 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('scripts', function() {
-	return gulp.src('scripts/main.js')
+	return gulp.src(['scripts/main.js', 'scripts/confetti.js'])
 		.pipe(webpack({output: {filename: 'main.js'}}))
 		.pipe(uglify())
 		.pipe(gulp.dest('./public/js/'));
