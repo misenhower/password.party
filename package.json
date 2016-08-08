@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "devDependencies": {
+    "bootswatch": "^3.3.7",
+    "clipboard": "^1.5.12",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0",
+    "webpack-stream": "^3.2.0"
+  }
+}
