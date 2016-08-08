@@ -1,3 +1,5 @@
+// Source: https://iprodev.com/confetti-animation-javascript/
+
 var retina = window.devicePixelRatio,
 
 	// Math shorthands
