@@ -1,3 +1,5 @@
+require('./confetti.js');
+
 var Clipboard = require('clipboard');
 
 var outputTextBox = jQuery('#password-output');
