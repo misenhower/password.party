@@ -1,11 +1,31 @@
 {
   "private": true,
-  "devDependencies": {
+  "scripts": {
+    "dev": "webpack",
+    "watch": "npm run dev -- --watch",
+    "prod": "webpack -p --env production",
+    "serve": "webpack-dev-server"
+  },
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "bootstrap-sass": "^3.3.7",
     "bootswatch": "^3.3.7",
-    "clipboard": "^1.5.12",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2",
-    "gulp-uglify": "^2.0.0",
-    "webpack-stream": "^3.2.0"
+    "clean-webpack-plugin": "^0.1.16",
+    "clipboard": "^1.6.1",
+    "css-loader": "^0.28.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "favicons-webpack-plugin": "^0.0.7",
+    "file-loader": "^0.11.1",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "node-sass": "^4.5.2",
+    "purifycss-webpack": "^0.6.1",
+    "resolve-url-loader": "^2.0.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5"
   }
 }
