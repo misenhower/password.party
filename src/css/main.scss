@@ -40,11 +40,47 @@ h1.site-name {
     z-index: 10;
 }
 
-#password {
+.password-container .input {
     font-family: $family-monospace;
     font-weight: 700;
     background-color: $grey-lighter;
     color: $grey-dark;
+
+    &::selection {
+        background: $blue;
+        color: $white-ter;
+    }
+}
+
+.password-container .control .icon,
+.password-container .control .input:focus ~ .icon {
+    color: $grey-dark;
+}
+
+.is-dark {
+    .password-container .input {
+        background-color: $grey-darker;
+        color: $grey-light;
+        border-color: $grey-dark;
+
+        &:focus {
+            border-color: $grey;
+        }
+
+        &::selection {
+            background: $grey-light;
+            color: $grey-lighter;
+        }
+    }
+
+    .password-container .control .icon,
+    .password-container .control .input:focus ~ .icon {
+        color: $grey-light;
+    }
+
+    .is-success {
+        background-color: darken($green, 10%);
+    }
 }
 
 #generate {
