@@ -1,46 +1,26 @@
-require('./confetti.js');
+import './confetti';
 
-var Clipboard = require('clipboard');
+import Clipboard from 'clipboard';
+import generatePassword from './generator';
 
-var outputTextBox = jQuery('#password-output');
-var generateButton = jQuery('#generate-btn');
-var toolTipContainer = outputTextBox.parent();
-
-toolTipContainer.tooltip({
-	title: 'Copied!',
-	trigger: 'manual',
-	placement: 'right',
-});
-
-function generate(length)
-{
-	var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	var n = charset.length;
-	var result = '';
-
-	for (var i = 0; i < length; i++)
-		result += charset.charAt(Math.floor(Math.random() * n));
-
-	return result;
-}
-
-function newPassword()
-{
-	var password = generate(16);
-	outputTextBox.val(password);
-}
-
-generateButton.click(function() {
-	newPassword();
-});
-
-outputTextBox.on('blur', function() {
-	toolTipContainer.tooltip('hide');
-});
-
-var clipboard = new Clipboard('#password-output');
+// Set up the textbox where password output will be displayed
+const passwordTextbox = document.getElementById('password');
+const clipboard = new Clipboard(passwordTextbox);
 clipboard.on('success', function(e) {
-	toolTipContainer.tooltip('show');
+    // TODO: Show tooltip
+    // Hide on textbox blur
 });
 
+// Generate a password and update the textbox
+function newPassword() {
+    passwordTextbox.value = generatePassword();
+}
+
+// Attach to the generate button
+document.getElementById('generate').addEventListener('click', function(e) {
+    e.preventDefault();
+    newPassword();
+});
+
+// Generate the initial password
 newPassword();

@@ -1,51 +1,52 @@
-$web-font-path: 'https://fonts.googleapis.com/css?family=Carter+One|Inconsolata:700|Source+Sans+Pro:400,700';
-// $icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+@import url('https://fonts.googleapis.com/css?family=Carter+One|Inconsolata:700|Source+Sans+Pro:400,700');
 
-// @import "lumen/variables";
-// @import "bootstrap";
-// @import "lumen/bootswatch";
+@import './variables';
+@import '~bulma';
 
+@import '../fontello/css/fontello.css';
+@import '../fontello/css/fontello-codes.css';
 
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-
-@import "~bootswatch/lumen/variables";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-@import "~bootswatch/lumen/bootswatch";
-
-h1 {
-	font-family: "Carter One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+html {
+    overflow-y: auto;
 }
 
-@media (min-width: $screen-sm-min) {
-	h1 {
-		font-size: 60px;
-	}
+h1.site-name {
+    font-size: 35px;
+    font-family: 'Carter One', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+@include tablet {
+    h1.site-name {
+        font-size: 60px;
+    }
+}
+
+@include mobile {
+    h1.site-name {
+        font-size: 10vw;
+    }
 }
 
 #confetti {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
 }
 
-#password-output {
-	font-family: Inconsolata, Consolas, "Liberation Mono", Menlo, Courier, monospace;
-	font-weight: 700;
+.main-area .column {
+    z-index: 10;
 }
 
-html, body {
-	height: 100%
+#password {
+    font-family: $family-monospace;
+    font-weight: 700;
+    background-color: $grey-lighter;
+    color: $grey-dark;
 }
 
-.vcwrap {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-}
-
-.vccontainer {
-	width: 100%;
+#generate {
+    box-shadow: inset -1px -1px 2px rgba($black, 0.05);
 }

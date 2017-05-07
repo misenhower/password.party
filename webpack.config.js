@@ -25,6 +25,11 @@ module.exports = function(env) {
         module: {
             loaders: [
                 {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loader: 'babel-loader'
+                },
+                {
                     test: /\.scss$/,
                     use: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
@@ -68,7 +73,7 @@ module.exports = function(env) {
                 paths: glob.sync(path.join(__dirname, 'src/html/*.html')),
                 minimize: production,
                 purifyOptions: {
-                    whitelist: ['.tooltip', '.tooltip-arrow', 'tooltip-inner', '.fade', '.right', '.in'],
+                    //whitelist: ['.tooltip'],
                 },
             }),
             // Favicon

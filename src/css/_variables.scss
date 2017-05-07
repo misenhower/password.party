@@ -1,0 +1,10 @@
+@import '~bulma/sass/utilities/initial-variables';
+
+$primary: $blue;
+$green: darken($green, 4%);
+
+$family-sans-serif: 'Source Sans Pro', $family-sans-serif;
+$family-monospace: Inconsolata, Consolas, 'Liberation Mono', Menlo, $family-monospace;
+
+$input-icon: $grey-dark;
+$input-icon-active: $grey-dark;
