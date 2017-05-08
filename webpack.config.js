@@ -30,6 +30,10 @@ module.exports = function(env) {
                     loader: 'babel-loader'
                 },
                 {
+                    test: /\.vue$/,
+                    loader: 'vue-loader',
+                },
+                {
                     test: /\.scss$/,
                     use: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
@@ -70,7 +74,10 @@ module.exports = function(env) {
             new ExtractTextPlugin('assets/css/[name].[contenthash].css'),
             // Remove unused CSS styles
             new PurifyCSSPlugin({
-                paths: glob.sync(path.join(__dirname, 'src/html/*.html')),
+                paths: [
+                    ...glob.sync(path.join(__dirname, 'src/html/*.html')),
+                    ...glob.sync(path.join(__dirname, 'src/js/components/*.vue')),
+                ],
                 minimize: production,
                 purifyOptions: {
                     //whitelist: ['.tooltip'],
