@@ -91,3 +91,9 @@ h1.site-name {
 .button {
     box-shadow: inset -1px -1px 2px rgba($black, 0.05);
 }
+
+.hide-tooltip {
+    &:before, &:after {
+        opacity: 0 !important;
+    }
+}

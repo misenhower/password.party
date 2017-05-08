@@ -17,8 +17,13 @@
                                     readonly="readonly"
                                     data-clipboard-target="#password"
                                     :value="password"
+                                    @blur="showTooltip = false"
                                     />
-                                <span class="icon is-small is-right"><i class="fa icon-paste"></i></span>
+                                <span class="icon is-small is-right">
+                                    <span class="tooltip is-primary is-right is-medium is-always is-animated" :class="{'hide-tooltip': !showTooltip}" data-label="Copied!">
+                                        <i class="fa icon-paste"></i>
+                                    </span>
+                                </span>
                             </p>
                         </div>
 
@@ -57,6 +62,7 @@ export default {
         return {
             password: null,
             night: false,
+            showTooltip: false,
         }
     },
     watch: {
@@ -78,7 +84,8 @@ export default {
         });
 
         // Clipboard
-        new Clipboard('#password');
+        let clipboard = new Clipboard('#password');
+        clipboard.on('success', () => { this.showTooltip = true; });
     },
     beforeDestroy() {
         window.removeEventListener('storage', this.loadStorage);
