@@ -49,6 +49,7 @@
 import Confetti from '../confetti';
 import Clipboard from 'clipboard';
 import generatePassword from '../generator';
+const localStorage = window.localStorage;
 
 export default {
     components: {  },
@@ -58,7 +59,14 @@ export default {
             night: false,
         }
     },
+    watch: {
+        night() {
+            this.saveStorage();
+        },
+    },
     created() {
+        this.loadStorage();
+        window.addEventListener('storage', this.loadStorage);
         this.newPassword();
     },
     mounted() {
@@ -73,9 +81,19 @@ export default {
         new Clipboard('#password');
     },
     beforeDestroy() {
+        window.removeEventListener('storage', this.loadStorage);
         confetti.stop();
     },
     methods: {
+        loadStorage() {
+            this.night = !!localStorage.getItem('night');
+        },
+        saveStorage() {
+            if (this.night)
+                localStorage.setItem('night', true);
+            else
+                localStorage.removeItem('night');
+        },
         newPassword() {
             this.password = generatePassword();
         },
