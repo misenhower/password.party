@@ -4811,6 +4811,10 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-bulma-slider@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/vue-bulma-slider/-/vue-bulma-slider-1.0.2.tgz#7b8e0dd0bc2c1a7c5e77d117059847ba41eaff14"
+
 vue-clipboard2@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/vue-clipboard2/-/vue-clipboard2-0.0.6.tgz#2cae4535efa1a5b873c87c8e5453220fb96d2a71"

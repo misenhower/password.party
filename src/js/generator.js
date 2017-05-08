@@ -5,7 +5,7 @@ const allCharsets = {
     symbols: '`~!@#$%^&*-_=+'.split(),
 }
 
-const defaultConfig = {
+export const defaultConfig = {
     length: 16,
     charsets: {
         lowercase: true,
@@ -13,6 +13,25 @@ const defaultConfig = {
         numbers: true,
         symbols: false,
     },
+}
+
+export const sanitizeConfig = function(config) {
+    const result = Object.assign({}, defaultConfig);
+
+    if ('length' in config) {
+        const length = parseInt(config.length);
+        if (length >= 4 && length <= 30)
+            result.length = length;
+    }
+
+    if ('charsets' in config) {
+        for (const key of Object.keys(result.charsets)) {
+            if (key in config.charsets)
+                result.charsets[key] = !!config.charsets[key];
+        }
+    }
+
+    return result;
 }
 
 function getRandomChars(charset, count) {

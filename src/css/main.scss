@@ -97,3 +97,50 @@ h1.site-name {
         opacity: 0 !important;
     }
 }
+
+input[type=range].slider {
+    &::-webkit-slider-runnable-track,
+    &::-webkit-slider-thumb,
+    & {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+}
+
+a[disabled], .hero.is-dark a[disabled] {
+    color: $grey;
+    cursor: default;
+}
+
+.card {
+    background-color: rgba($white, 0.8);
+    .card-header, .card-footer {
+        background-color: rgba($white, 0.8);
+    }
+}
+
+.is-dark .button:not(.is-success) {
+    background-color: $dark;
+    color: $dark-invert;
+    border-color: $grey-darker;
+}
+
+.is-dark .card {
+    background-color: rgba($dark, 0.8);
+    .card-header, .card-footer {
+        background-color: rgba($dark, 0.8);
+    }
+
+    color: $dark-invert;
+    box-shadow: 0 2px 3px rgba($white, 0.1), 0 0 0 1px rgba($white, 0.1);
+
+    .card-header {
+        box-shadow: 0 1px 2px rgba($white, 0.1);
+    }
+    .card-header-title, .content, .label {
+        color: $grey-lighter;
+    }
+    .card-footer, .card-footer-item {
+        border-color: $grey-darker;
+    }
+}
