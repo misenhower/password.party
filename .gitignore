@@ -1,2 +1,4 @@
 node_modules
 public/assets/icons/**/.cache
+docker-compose.override.yml
+logs
