@@ -34,12 +34,16 @@ export const sanitizeConfig = function(config) {
     return result;
 }
 
+function getRandomNumber() {
+    return window.crypto.getRandomValues(new Uint32Array(1))[0];
+}
+
 function getRandomChars(charset, count) {
     const length = charset.length;
     let result = '';
 
     for (let i = 0; i < count; i++)
-        result += charset.charAt(Math.floor(Math.random() * length));
+        result += charset.charAt(getRandomNumber() % length);
 
     return result;
 }
