@@ -2,41 +2,45 @@
     <section class="hero is-fullheight has-text-centered" :class="{ 'is-dark': night }">
         <div class="hero-body">
             <canvas id="confetti"></canvas>
-            <div class="container">
-                <h1 class="title site-name">
-                    password.party
-                </h1>
 
-                <div class="columns is-mobile main-area">
-                    <div class="column is-half-tablet is-offset-one-quarter-tablet">
-                        <div class="field password-container">
-                            <p class="control has-icons-right">
-                                <input
-                                    id="password"
-                                    class="input is-medium has-text-centered"
-                                    readonly="readonly"
-                                    data-clipboard-target="#password"
-                                    :value="password"
-                                    @blur="showTooltip = false"
-                                    />
-                                <span class="icon is-right">
-                                    <span data-label="Copied!" class="is-primary is-right is-small b-tooltip is-animated is-always" :class="{'hide-tooltip': !showTooltip}">
-                                        <i class="fa icon-paste"></i>
+            <transition name="fade" mode="out-in">
+                <div class="container" :key="showOptions">
+                    <h1 class="title site-name">
+                        password.party
+                    </h1>
+
+                    <div class="columns is-mobile main-area">
+                        <div class="column is-half-tablet is-offset-one-quarter-tablet">
+                            <div class="field password-container">
+                                <p class="control has-icons-right">
+                                    <input
+                                        id="password"
+                                        class="input is-medium has-text-centered"
+                                        readonly="readonly"
+                                        data-clipboard-target="#password"
+                                        :value="password"
+                                        @blur="showTooltip = false"
+                                        />
+                                    <span class="icon is-right">
+                                        <span data-label="Copied!" class="is-primary is-bottom is-small b-tooltip is-animated is-always is-hidden-desktop" :class="{'hide-tooltip': !showTooltip}">
+                                            <i class="fa icon-paste"></i>
+                                        </span>
+                                        <span data-label="Copied!" class="is-primary is-right is-small b-tooltip is-animated is-always is-hidden-touch" :class="{'hide-tooltip': !showTooltip}">
+                                            <i class="fa icon-paste"></i>
+                                        </span>
                                     </span>
-                                </span>
-                            </p>
-                        </div>
+                                </p>
+                            </div>
 
-                        <div class="field is-grouped" style="justify-content: center">
-                            <p class="control">
-                                <button class="button is-success" @click="newPassword">Generate</button>
-                            </p>
-                            <p class="control">
-                                <button class="button" @click="showOptions = !showOptions">Options</button>
-                            </p>
-                        </div>
+                            <div class="field is-grouped" style="justify-content: center">
+                                <p class="control">
+                                    <button class="button is-success" @click="newPassword">Generate</button>
+                                </p>
+                                <p class="control">
+                                    <button class="button" @click="showOptions = !showOptions">Options</button>
+                                </p>
+                            </div>
 
-                        <transition name="fade">
                             <div class="card has-text-left" v-if="showOptions">
                                 <header class="card-header">
                                     <p class="card-header-title">
@@ -94,10 +98,10 @@
                                     <a class="card-footer-item" @click="showOptions = false">Close</a>
                                 </footer>
                             </div>
-                        </transition>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </transition>
         </div>
 
         <div class="hero-foot">
