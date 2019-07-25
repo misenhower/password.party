@@ -4,7 +4,7 @@
             <canvas id="confetti"></canvas>
 
             <transition name="fade" mode="out-in">
-                <div class="container" :key="showOptions">
+                <div class="container main-container" :key="showOptions">
                     <h1 class="title site-name">
                         password.party
                     </h1>
