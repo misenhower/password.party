@@ -19,8 +19,8 @@
                                     :value="password"
                                     @blur="showTooltip = false"
                                     />
-                                <span class="icon is-small is-right">
-                                    <span class="tooltip is-primary is-right is-medium is-always is-animated" :class="{'hide-tooltip': !showTooltip}" data-label="Copied!">
+                                <span class="icon is-right">
+                                    <span data-label="Copied!" class="is-primary is-right is-small b-tooltip is-animated is-always" :class="{'hide-tooltip': !showTooltip}">
                                         <i class="fa icon-paste"></i>
                                     </span>
                                 </span>
@@ -75,7 +75,13 @@
                                                             <span class="is-pulled-right">{{ config.length }}</span>
                                                             Characters
                                                         </label>
-                                                        <slider type="info" :value="config.length" :min="4" :max="30" :step="1" @change="config.length = parseInt($event)" is-fullwidth></slider>
+                                                        <Slider
+                                                            class="is-fullwidth is-circle"
+                                                            :min="4"
+                                                            :max="30"
+                                                            v-model="config.length"
+                                                            />
+
                                                     </p>
                                                 </div>
                                             </div>
@@ -120,11 +126,11 @@
 </style>
 
 <script>
-import Confetti from '../confetti';
+import Confetti from './utilities/confetti';
 import Clipboard from 'clipboard';
-import Slider from 'vue-bulma-slider';
-import generatePassword from '../generator';
-import { defaultConfig, sanitizeConfig } from '../generator';
+import Slider from './components/Slider';
+import generatePassword from './utilities/generator';
+import { defaultConfig, sanitizeConfig } from './utilities/generator';
 const localStorage = window.localStorage;
 
 export default {
@@ -157,9 +163,10 @@ export default {
         // Confetti
         let confetti = new Confetti('confetti');
         confetti.start();
-        window.addEventListener('resize', function(event){
+        window.addEventListener('resize', function(){
             confetti.resize();
         });
+        this.confetti = confetti;
 
         // Clipboard
         let clipboard = new Clipboard('#password');
@@ -167,7 +174,7 @@ export default {
     },
     beforeDestroy() {
         window.removeEventListener('storage', this.loadNight);
-        confetti.stop();
+        this.confetti.stop();
     },
     methods: {
         loadNight() {
@@ -180,7 +187,9 @@ export default {
                     config = JSON.parse(config);
                     config = sanitizeConfig(config);
                     Object.assign(this.config, config);
-                } catch (e) { }
+                } catch (e) {
+                    //
+                }
             }
         },
         saveNight() {

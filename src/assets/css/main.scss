@@ -3,6 +3,7 @@
 @import './variables';
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
+@import '~bulma-slider/src/sass/index';
 
 @import '../fontello/css/fontello.css';
 @import '../fontello/css/fontello-codes.css';
@@ -18,6 +19,7 @@ html {
 h1.site-name {
     font-size: 35px;
     font-family: 'Carter One', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
 }
 
 @include tablet {
@@ -99,11 +101,12 @@ h1.site-name {
 }
 
 input[type=range].slider {
-    &::-webkit-slider-runnable-track,
-    &::-webkit-slider-thumb,
-    & {
-        -webkit-appearance: none;
-        appearance: none;
+    &::-webkit-slider-runnable-track {
+        background: linear-gradient(to right, $blue var(--low), $blue calc(0%), $blue var(--high), $grey-lighter calc(0%)) no-repeat 0 100%;
+    }
+    &::-webkit-slider-thumb {
+        border-color: $blue;
+        border-width: 3px;
     }
 }
 
@@ -140,7 +143,18 @@ a[disabled], .hero.is-dark a[disabled] {
     .card-header-title, .content, .label {
         color: $grey-lighter;
     }
+    .label {
+        font-weight: normal;
+    }
     .card-footer, .card-footer-item {
+        color: $dark-invert;
         border-color: $grey-darker;
     }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }

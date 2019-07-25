@@ -1,4 +1,5 @@
 // Adapted from: https://iprodev.com/confetti-animation-javascript/
+/* eslint-disable */
 
 var retina = window.devicePixelRatio,
 
