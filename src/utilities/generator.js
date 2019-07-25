@@ -1,8 +1,8 @@
 const allCharsets = {
-    lowercase: 'abcdefghijklmnopqrstuvwxyz'.split(),
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(),
-    numbers: '0123456789'.split(),
-    symbols: '`~!@#$%^&*-_=+'.split(),
+    lowercase: 'abcdefghijklmnopqrstuvwxyz',
+    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    numbers: '0123456789',
+    symbols: '`~!@#$%^&*-_=+',
 }
 
 export const defaultConfig = {
@@ -48,6 +48,27 @@ function getRandomChars(charset, count) {
     return result;
 }
 
+function isValidPassword(value, charsets) {
+    // Make sure we have at least one character from each group
+
+    for (let charset of charsets) {
+        let found = false;
+
+        for (let char of charset) {
+            if (value.indexOf(char) > -1) {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 function generatePassword(config) {
     config = Object.assign({}, defaultConfig, config);
 
@@ -61,9 +82,13 @@ function generatePassword(config) {
     if (charsets.length === 0)
         return '';
 
-    // TODO: Make sure we have at least one character from each group
+    let result;
 
-    return getRandomChars(charsets.join(''), config.length);
+    do {
+        result = getRandomChars(charsets.join(''), config.length);
+    } while (!isValidPassword(result, charsets));
+
+    return result;
 }
 
 export default generatePassword;
