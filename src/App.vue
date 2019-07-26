@@ -3,13 +3,15 @@
         <div class="hero-body">
             <canvas id="confetti"></canvas>
 
-            <transition name="fade" mode="out-in">
-                <div class="container main-container" :key="showOptions">
-                    <h1 class="title site-name">
+            <div class="container" >
+                <transition name="fade" mode="out-in">
+                    <h1 class="title site-name" :key="showOptions">
                         password.party
                     </h1>
+                </transition>
 
-                    <div class="columns is-mobile main-area">
+                <transition name="fade" mode="out-in">
+                    <div class="columns is-mobile main-area" :key="showOptions">
                         <div class="column is-half-tablet is-offset-one-quarter-tablet">
                             <div class="field password-container">
                                 <p class="control has-icons-right">
@@ -100,8 +102,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </transition>
+                </transition>
+            </div>
         </div>
 
         <div class="hero-foot">

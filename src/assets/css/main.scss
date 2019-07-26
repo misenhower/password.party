@@ -43,11 +43,13 @@ h1.site-name {
     height: 100%;
 }
 
-.main-container {
+.main-area {
     z-index: 10;
+    position: inherit;
 }
 
 .main-area .column {
+    position: relative;
     z-index: 10;
 }
 
@@ -157,8 +159,8 @@ a[disabled], .hero.is-dark a[disabled] {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .15s;
+    transition: opacity .15s;
 }
 .fade-enter, .fade-leave-to {
-  opacity: 0;
+    opacity: 0;
 }
